@@ -13,7 +13,7 @@ export default function Home() {
         <Profile
           name="박종훈"
           bio="풀스택 개발자 | 요즘에는 AI 개발에 관심이 많아요"
-          photoUrl="https://placehold.co/150x150/orange/white"
+          photoUrl="/profile.jpg"
         />
         <LinkList links={links} />
       </main>
