@@ -7,7 +7,7 @@ interface ProfileProps {
 export default function Profile({ name, bio, photoUrl }: ProfileProps) {
   return (
     <div className="flex flex-col items-center gap-3 text-center">
-      <div className="h-32 w-32 overflow-hidden rounded-full border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="relative h-32 w-32 overflow-hidden rounded-full ring-[6px] ring-white/80 shadow-[0_14px_30px_-10px_rgba(190,110,50,0.5),0_2px_6px_rgba(0,0,0,0.06)] dark:ring-white/10 dark:shadow-[0_14px_30px_-10px_rgba(0,0,0,0.55)]">
         {photoUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -16,15 +16,23 @@ export default function Profile({ name, bio, photoUrl }: ProfileProps) {
             className="h-full w-full object-cover"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-3xl font-semibold text-zinc-400 dark:text-zinc-600">
+          <div className="flex h-full w-full items-center justify-center bg-stone-100 text-3xl font-semibold text-stone-400 dark:bg-stone-900 dark:text-stone-600">
             {name.charAt(0)}
           </div>
         )}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-br from-white/55 via-white/0 to-black/10 mix-blend-overlay"
+        />
       </div>
-      <h1 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">
-        {name}
-      </h1>
-      <p className="text-sm text-zinc-500 dark:text-zinc-400">{bio}</p>
+      <div className="flex flex-col gap-1.5">
+        <h1 className="text-xl font-bold tracking-tight text-stone-900 dark:text-stone-50">
+          {name}
+        </h1>
+        <p className="text-sm leading-relaxed text-stone-500 dark:text-stone-400">
+          {bio}
+        </p>
+      </div>
     </div>
   );
 }
